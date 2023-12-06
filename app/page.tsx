@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 const private_sheet_url: string = process.env.NEXT_PUBLIC_SHEET_URL ?? "";
-const public_sheet_url: string = process.env.NEXT_PUBLIC_SHEET_PUBLIC_URL;
+const public_sheet_url: string = process.env.NEXT_PUBLIC_SHEET_PUBLIC_URL ?? "";
 
 const csv2json = (csvString: string): any => {
     const json: any[] = [];
