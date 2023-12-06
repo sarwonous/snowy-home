@@ -1,7 +1,7 @@
 import GoogleProvider from "next-auth/providers/google";
 export const authOptions = {
     theme: {
-        logo: "https://next-auth.js.org/img/logo/logo-sm.png",
+        logo: "https://agussarwono.com/images/avatar@2x.png",
     },
     providers: [
         GoogleProvider({
