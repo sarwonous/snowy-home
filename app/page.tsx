@@ -62,7 +62,7 @@ export default async function Home() {
                                 href={i.url}
                                 target="_blank"
                                 title={i.title}
-                                className="flex justify-center py-5 cursor-pointer shadow rounded-lg border border-gray-200 transition-all hover:bg-slate-800 hover:text-white"
+                                className="block justify-center p-5 cursor-pointer shadow rounded-lg border border-gray-200 transition-all hover:bg-slate-800 hover:text-white"
                             >
                                 <div className="flex  items-center flex-col">
                                     <div className="p-2 group-hover:scale-150 transition-all">

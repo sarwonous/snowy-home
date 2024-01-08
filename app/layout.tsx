@@ -19,7 +19,7 @@ export default function RootLayout({
             <head>
                 <Script src="https://unpkg.com/@phosphor-icons/web" />
             </head>
-            <body className={`${nunito.className} bg-gray-200 text-gray-700`}>
+            <body className={`${nunito.className} bg-gray-100 text-gray-700`}>
                 {children}
             </body>
         </html>
