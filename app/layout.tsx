@@ -1,25 +1,27 @@
-import Script from 'next/script'
-import './globals.css'
-import { Inter } from 'next/font/google'
+import Script from "next/script";
+import "./globals.css";
+import { Nunito } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Dashboard',
-  description: 'Dashboard',
-}
+    title: "Dashboard",
+    description: "Dashboard",
+};
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <head>
-        <Script src="https://unpkg.com/@phosphor-icons/web"/>
-      </head>
-      <body className={inter.className}>{children}</body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <head>
+                <Script src="https://unpkg.com/@phosphor-icons/web" />
+            </head>
+            <body className={`${nunito.className} bg-gray-200 text-gray-700`}>
+                {children}
+            </body>
+        </html>
+    );
 }

@@ -55,20 +55,22 @@ export default async function Home() {
                         Logout
                     </a>
                 </div>
-                <div className="flex">
+                <div className="flex flex-wrap justify-start">
                     {data.map((i: any, k: number) => (
-                        <div
-                            key={k}
-                            className="group w-1/12 cursor-pointer p-5 shadow-sm rounded-xl border m-2 hover:border-dashed hover:scale-110 transition-all"
-                        >
-                            <a href={i.url} target="_blank">
-                                <div className="flex items-center flex-col">
+                        <div key={k} className="group w-2/12 p-2">
+                            <a
+                                href={i.url}
+                                target="_blank"
+                                title={i.title}
+                                className="flex justify-center py-5 cursor-pointer shadow rounded-lg border border-gray-200 transition-all hover:bg-slate-800 hover:text-white"
+                            >
+                                <div className="flex  items-center flex-col">
                                     <div className="p-2 group-hover:scale-150 transition-all">
                                         <i className={`ph ph-${i.name}`}></i>
                                     </div>
-                                    <span className="text-center text-sm">
+                                    <p className="w-full text-center text-sm truncate text-ellipsis overflow-hidden">
                                         {i.title}
-                                    </span>
+                                    </p>
                                 </div>
                             </a>
                         </div>
