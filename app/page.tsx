@@ -57,7 +57,7 @@ export default async function Home() {
                 </div>
                 <div className="flex flex-wrap justify-start">
                     {data.map((i: any, k: number) => (
-                        <div key={k} className="group w-2/12 p-2">
+                        <div key={k} className="group w-1/12 p-2">
                             <a
                                 href={i.url}
                                 target="_blank"
