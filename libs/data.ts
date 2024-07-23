@@ -44,7 +44,6 @@ export const getData = async (url: string, reload: boolean = false):Promise<any[
 let tools:null | any[] = null;
 
 export const getPrivateList = async (reload: boolean = false) => {
-    console.log(`\x1b[42m ${JSON.stringify(tools)} \x1b[0m`);
     if (!reload && tools !== null) {
         return tools;
     }
@@ -55,7 +54,6 @@ export const getPrivateList = async (reload: boolean = false) => {
 let publicLinks:null | any[] = null;
 
 export const getPublicList = async (reload: boolean = false) => {
-    console.log(`\x1b[42m ${JSON.stringify(publicLinks)} \x1b[0m`);
     if (!reload && publicLinks !== null) {
         return publicLinks;
     }
@@ -67,7 +65,6 @@ export const getHealth = async (type: string, name: string) => {
     const data = type === 'private' ? await getPrivateList() : await getPublicList();
     const entry = (data ?? []).find(a => a.name === name);
     const urlHealth = entry?.['health check'];
-    console.log(`\x1b[44m ${name} ${JSON.stringify(entry)} \x1b[0m`);
     
     if (urlHealth && urlHealth !== "") {
         try {

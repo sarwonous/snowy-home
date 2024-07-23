@@ -1,13 +1,13 @@
 "use client";
 import { Session } from "next-auth";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const Indicator = ({
     service,
 }: any) => {
     const [status, setStatus] = useState('');
     const timer = useRef<any>();
-    const getHealth = async (app:string) => {
+    const getHealth = useCallback(async (app: string) => {
         try {
             const resp = await fetch(`/api/health/${app}`);
             const data = await resp.json();
@@ -15,14 +15,14 @@ const Indicator = ({
         } catch (error) {
             setStatus('');
         }
-    }
+    }, []);
     
-    const createInterval = async(app: string): Promise<number> => {
-        await getHealth(app);
-        return window.setInterval(async() => {
+    const createInterval = useCallback(async (app: string): Promise<number> => {
+        getHealth(app);
+        return window.setInterval(async () => {
             await getHealth(app);
-        }, 13000);
-    }
+        }, 20000);
+    }, [getHealth]);
 
     useEffect(() => {
         if (service.check === 'y') {
@@ -31,14 +31,14 @@ const Indicator = ({
         return () => {
             clearInterval(timer.current);
         }
-    }, []);
+    }, [createInterval, service.check, service.name]);
 
     if (status === 'OK') {
-        return <div className={`absolute top-2 right-2 w-4 h-4 bg-green-700 animate-pulse rounded`}></div>;
+        return <div className={`absolute top-2 right-2 w-2 h-2 bg-green-700 rounded-full`}></div>;
     } else if (status === 'NOTOK') {
-        return <div className={`absolute top-2 right-2 w-4 h-4 bg-red-700 animate-pulse rounded`}></div>;
+        return <div className={`absolute top-2 right-2 w-2 h-2 bg-red-700 rounded-full`}></div>;
     } else {
-        return <div className={`absolute top-2 right-2 w-4 h-4 bg-gray-700 animate-pulse rounded`}></div>;
+        return <div className={`absolute top-2 right-2 w-2 h-2 bg-gray-500 rounded-full`}></div>;
     }
 }
 
@@ -61,7 +61,7 @@ export const Private = ({
                             href={i.url}
                             target="_blank"
                             title={i.title}
-                            className="max-w-sm relative block cursor-pointer justify-center rounded-lg border border-gray-200 p-5 shadow transition-all hover:bg-slate-800 hover:text-white"
+                            className="max-w-sm relative block cursor-pointer justify-center rounded-lg border border-gray-200 p-5 transition-all hover:bg-slate-800 hover:text-white"
                         >
                             <Indicator service={i} />
                             <div className="flex  flex-col items-center">
