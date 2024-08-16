@@ -1,8 +1,8 @@
 import Script from "next/script";
 import "./globals.css";
-import { Nunito } from "next/font/google";
+import { Special_Elite } from "next/font/google";
 
-const nunito = Nunito({ subsets: ["latin"] });
+const specialElite = Special_Elite({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
     title: "Dashboard",
@@ -19,7 +19,7 @@ export default function RootLayout({
             <head>
                 <Script src="https://unpkg.com/@phosphor-icons/web" />
             </head>
-            <body className={`${nunito.className} bg-gray-100 text-gray-700`}>
+            <body className={`${specialElite.className} bg-gray-100 text-gray-700`}>
                 {children}
             </body>
         </html>
