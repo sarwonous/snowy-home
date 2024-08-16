@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]";
+import { authOptions } from "@/libs/auth";
 import { getData, getPrivateList, getPublicList, private_sheet_url, public_sheet_url } from "@/libs/data";
 import Private from "@/components/private";
 import Public from "@/components/public";
